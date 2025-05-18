@@ -18,7 +18,7 @@ else:
     load_dotenv(dotenv_path=ENV_FILE)
     logger.info(f"Loaded environment variables from {ENV_FILE}")
 
-required_env_vars = []
+required_env_vars = ["test"]
 non_essential_env_vars = []
 
 for var in required_env_vars:
@@ -33,10 +33,10 @@ for var in non_essential_env_vars:
 class Settings:
     """Settings class to hold environment variables."""
 
-    # # Example environment variables
-    # DATABASE_URL = os.getenv("DATABASE_URL")
-    # REDIS_URL = os.getenv("REDIS_URL")
-    # DEBUG = os.getenv("DEBUG", "false").lower() == "true"
+    def __init__(self):
+        self.test = os.getenv("test")
+        # Add more environment variables as needed
+        # self.another_var = os.getenv("another_var")
 
 
 # Log key paths
