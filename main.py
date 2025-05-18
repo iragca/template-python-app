@@ -1,3 +1,5 @@
+from src.config import 
+
 def main():
     print("Hello from template-python-app!")
 

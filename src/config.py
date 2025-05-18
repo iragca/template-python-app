@@ -3,30 +3,44 @@ import pathlib
 
 from dotenv import load_dotenv
 from loguru import logger
+from src.utils import check_env_variable
 
-PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
+
+# Define paths
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
+ENV_FILE = PROJECT_ROOT / ".env"
 DATA_DIR = PROJECT_ROOT / "data"
 
-if not (PROJECT_ROOT / ".env").exists():
-    raise FileNotFoundError(
-        f"Please create a .env file in the root directory ({PROJECT_ROOT})"
+# Ensure .env file exists
+if not ENV_FILE.exists():
+    logger.warning(
+        f".env file not found at {ENV_FILE}. Please create one with the required environment variables."
     )
 else:
-    load_dotenv(PROJECT_ROOT / ".env")
+    load_dotenv(dotenv_path=ENV_FILE)
+    logger.info(f"Loaded environment variables from {ENV_FILE}")
 
-    # # Load environment variables
-    # DATABASE_URL1 = os.getenv("DATABASE_URL1")
-    # DATABASE_URL2 = os.getenv("DATABASE_URL2")
+required_env_vars = []
+non_essential_env_vars = []
 
-    def check_env_variable(var_name):
-        """Check if an environment variable is set."""
-        if var_name is None:
-            raise EnvironmentError(f"Environment variable {var_name} is not set.")
+for var in required_env_vars:
+    value = os.getenv(var)
+    check_env_variable(value, var, important=True)
 
-    ## Check if the environment variables are set
-    # check_env_variable(DATABASE_URL1)
-    # check_env_variable(DATABASE_URL2)
+for var in non_essential_env_vars:
+    value = os.getenv(var)
+    check_env_variable(value, var)
 
 
+class Settings:
+    """Settings class to hold environment variables."""
+
+    # # Example environment variables
+    # DATABASE_URL = os.getenv("DATABASE_URL")
+    # REDIS_URL = os.getenv("REDIS_URL")
+    # DEBUG = os.getenv("DEBUG", "false").lower() == "true"
+
+
+# Log key paths
 logger.info(f"PROJECT_ROOT: {PROJECT_ROOT}")
 logger.info(f"DATA_DIR: {DATA_DIR}")
