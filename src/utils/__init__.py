@@ -1,4 +1,5 @@
 from .check_env_var import check_env_variable
+from .greetings import greetings
 
 
-__all__ = ["check_env_variable"]
+__all__ = ["check_env_variable", "greetings"]

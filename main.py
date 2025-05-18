@@ -1,7 +1,9 @@
-from src.config import 
+from src.config import PROJECT_ROOT
+from src.utils import greetings
+
 
 def main():
-    print("Hello from template-python-app!")
+    greetings(PROJECT_ROOT.name)
 
 
 if __name__ == "__main__":
