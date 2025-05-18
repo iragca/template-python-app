@@ -1,6 +1,6 @@
 def greetings(name: str) -> str:
     """
-    Function to greet a user with their name.
+    Function to print out a greeting message from the repository.
 
     Args:
         name (str): Name of the repository.
