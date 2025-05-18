@@ -1,10 +1,11 @@
 import os
 import pathlib
+from enum import Enum
 
 from dotenv import load_dotenv
 from loguru import logger
-from src.utils import check_env_variable
 
+from src.utils import check_env_variable
 
 PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
 ENV_FILE = PROJECT_ROOT / ".env"
@@ -18,7 +19,7 @@ else:
     load_dotenv(dotenv_path=ENV_FILE)
     logger.info(f"Loaded environment variables from {ENV_FILE}")
 
-required_env_vars = ["test"]
+required_env_vars = []
 non_essential_env_vars = []
 
 for var in required_env_vars:
@@ -30,13 +31,11 @@ for var in non_essential_env_vars:
     check_env_variable(value, var)
 
 
-class Settings:
+class Settings(Enum):
     """Settings class to hold environment variables."""
 
-    def __init__(self):
-        self.test = os.getenv("test")
-        # Add more environment variables as needed
-        # self.another_var = os.getenv("another_var")
+    # Add more environment variables as needed
+    # EXAMPLE = os.getenv("example")
 
 
 # Log key paths
