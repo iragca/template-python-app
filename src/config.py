@@ -6,12 +6,10 @@ from loguru import logger
 from src.utils import check_env_variable
 
 
-# Define paths
 PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
 ENV_FILE = PROJECT_ROOT / ".env"
 DATA_DIR = PROJECT_ROOT / "data"
 
-# Ensure .env file exists
 if not ENV_FILE.exists():
     logger.warning(
         f".env file not found at {ENV_FILE}. Please create one with the required environment variables."
