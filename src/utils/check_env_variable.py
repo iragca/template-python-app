@@ -1,5 +1,4 @@
 from loguru import logger
-import sys
 
 
 def check_env_variable(var, var_name: str, important: bool = False):
@@ -7,6 +6,6 @@ def check_env_variable(var, var_name: str, important: bool = False):
     if var is None:
         if important:
             logger.error(EnvironmentError(f"Environment variable '{var_name}' is not set."))
-            sys.exit(1)
+            exit(1)
         else:
             logger.warning(f"Environment variable {var_name} is not set.")
