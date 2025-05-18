@@ -6,7 +6,7 @@ def greetings(name: str) -> str:
         name (str): Name of the repository.
 
     Returns:
-        str: A greeting message.
+        None
     """
 
     print(f"Hello, from {name}!")
