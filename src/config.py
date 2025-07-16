@@ -31,7 +31,7 @@ for var in non_essential_env_vars:
     check_env_variable(value, var)
 
 
-class Settings(Enum):
+class Environment(Enum):
     """Settings class to hold environment variables."""
 
     # Add more environment variables as needed
