@@ -5,24 +5,28 @@ from enum import Enum
 from dotenv import load_dotenv
 from loguru import logger
 
-from src.utils import check_env_variable, ensure_path
+from src.utils import check_env_variable, ensure_file, ensure_path
 
 
 class DirectoryPaths(Enum):
     PROJECT_ROOT = pathlib.Path(__file__).resolve().parent.parent
-    ENV_FILE = ensure_path(PROJECT_ROOT / ".env")
-    DATA_DIR = ensure_path(PROJECT_ROOT / "data")
+    ENV_FILE = ensure_file(PROJECT_ROOT / ".env")
+    DATA = ensure_path(PROJECT_ROOT / "data")
+    EXTERNAL_DATA = ensure_path(DATA / "external")
+
+
+class Environment(Enum):
+    """Settings class to hold environment variables."""
+
+    # Example:
+    # DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 _PROJECT_ROOT = DirectoryPaths.PROJECT_ROOT.value
-_DATA_DIR = DirectoryPaths.DATA_DIR.value
+_DATA_DIR = DirectoryPaths.DATA.value
 _ENV_FILE = DirectoryPaths.ENV_FILE.value
 
-if not _ENV_FILE.exists():
-    logger.warning(
-        f".env file not found at {_ENV_FILE}. Please create one with the required environment variables."
-    )
-else:
+if _ENV_FILE.exists():
     load_dotenv(dotenv_path=_ENV_FILE)
     logger.info(f"Loaded environment variables from {_ENV_FILE}")
 
@@ -36,13 +40,6 @@ for var in required_env_vars:
 for var in non_essential_env_vars:
     value = os.getenv(var)
     check_env_variable(value, var)
-
-
-class Environment(Enum):
-    """Settings class to hold environment variables."""
-
-    # Example:
-    # DB_URL = os.getenv("DB_URL")
 
 
 # Log key paths
