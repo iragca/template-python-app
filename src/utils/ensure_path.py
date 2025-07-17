@@ -1,7 +1,7 @@
 from pathlib import Path
 
 
-def ensure_path(path: Path) -> None:
+def ensure_path(path: Path) -> Path:
     """
     Ensure that the given path is a Path object.
     If the path does not exist, it will create the directory.
