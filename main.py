@@ -1,9 +1,9 @@
-from src.config import PROJECT_ROOT
+from src.config import DirectoryPaths as dir
 from src.utils import greetings
 
 
 def main():
-    greetings(PROJECT_ROOT.name)
+    greetings(dir.PROJECT_ROOT.value.name)
 
 
 if __name__ == "__main__":
