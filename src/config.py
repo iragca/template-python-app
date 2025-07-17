@@ -5,7 +5,7 @@ from enum import Enum
 from dotenv import load_dotenv
 from loguru import logger
 
-from src.utils import check_env_variable, ensure_file, ensure_path
+from .utils import check_env_variable, ensure_file, ensure_path
 
 
 class DirectoryPaths(Enum):
