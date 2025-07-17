@@ -16,6 +16,6 @@ def ensure_file(file: Path) -> Path:
 
     if not file.exists():
         file.touch()
-        print(f"File not found. Created it instead: {file}")
+        print(f"File not found. Created `{file.name}` instead at `{file.parent}`")
 
     return file
