@@ -16,3 +16,6 @@ wheels/
 # Environment variables
 .env
 *.env
+
+# Test Notebooks
+*.test.ipynb
