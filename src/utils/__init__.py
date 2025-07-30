@@ -1,9 +1,9 @@
 from .check_env_variable import check_env_variable
-from .greetings import greetings
-from .ensure_path import ensure_path
-from .ensure_file import ensure_file
+from .check_type import check_type
 from .cli_script_logger import cli_script_logger
-
+from .ensure_file import ensure_file
+from .ensure_path import ensure_path
+from .greetings import greetings
 
 __all__ = [
     "check_env_variable",
@@ -11,4 +11,5 @@ __all__ = [
     "ensure_path",
     "ensure_file",
     "cli_script_logger",
+    "check_type",
 ]
