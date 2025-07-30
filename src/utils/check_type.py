@@ -1,4 +1,4 @@
-def check_type(var, expected_type: type):
+def check_type(var, expected_type: type) -> bool:
     """Check if a variable is of the expected type."""
     if not isinstance(var, expected_type):
         raise TypeError(
