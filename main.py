@@ -1,6 +1,7 @@
-from src.config import DirectoryPaths as dir
-from src.utils import greetings, ensure_path, ensure_file
 from typer import Typer
+
+from src.config import DirectoryPaths as dir
+from src.utils import ensure_file, ensure_path, greetings
 
 app = Typer()
 
