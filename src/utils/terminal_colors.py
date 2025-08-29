@@ -1,4 +1,5 @@
 from enum import Enum
+
 from .check_type import check_type
 
 
@@ -14,8 +15,22 @@ class Colors(Enum):
 
 
 def color_text(text: str, color: Colors | str) -> str:
+    """Wrap text in ANSI color codes.
+
+    args:
+        text (str): The text to color.
+        color (Colors | str): The color to apply.
+
+    returns:
+        str: The colored text wrapped in ANSI codes.
+
+    raises:
+        TypeError: If the text is not a string or the color is not a Colors enum or string.
+    """
+
     check_type(text, str, "text")
     check_type(color, (Colors, str), "color")
+
     if isinstance(color, Colors):
         return f"{color.value}{text}{Colors.RESET.value}"
 
