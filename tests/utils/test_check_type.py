@@ -1,5 +1,6 @@
-from src.utils import check_type
 import pytest
+
+from src.utils import check_type
 
 
 @pytest.mark.parametrize(
