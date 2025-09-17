@@ -17,4 +17,4 @@ def check_type(
             f"Variable '{var_name}' must be of type(s) {expected_types}, got {type(var)} instead."
         )
 
-    return True
+    return var
