@@ -17,6 +17,7 @@ from src.utils import check_type
         ("hello", (int, float), "var", True),
         (None, int, "var", True),
         (5, [int, "str"], "var", True),
+        (5, [], "var", True),
     ],
 )
 def test_check_type(var, expected_types, var_name, should_raise):
