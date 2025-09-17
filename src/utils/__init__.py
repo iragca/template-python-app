@@ -5,6 +5,7 @@ from .cli_script_logger import cli_script_logger
 from .ensure_file import ensure_file
 from .ensure_path import ensure_path
 from .greetings import greetings
+from .warnings import deprecated
 
 __all__ = [
     "check_env_variable",
@@ -14,4 +15,5 @@ __all__ = [
     "cli_script_logger",
     "check_type",
     "check_value",
+    "deprecated",
 ]
