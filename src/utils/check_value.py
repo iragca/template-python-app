@@ -55,6 +55,7 @@ def check_value(
 
     # Normalize all elements in valid_values to Python numbers
     if isinstance(valid_values, (list, tuple)):
+
         valid_values = type(valid_values)(to_python_scalar(v) for v in valid_values)
     else:
         valid_values = to_python_scalar(valid_values)
