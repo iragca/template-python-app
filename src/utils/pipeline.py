@@ -47,16 +47,18 @@ class Step:
         self.func = func
         self.args = args
         self.kwargs = kwargs
+        self.description = kwargs.pop("description", None)
 
     def __call__(self, value: Any) -> Any:
         return self.func(value, *self.args, **self.kwargs)
 
-    def __name__(self) -> str:
-        return self.func.__name__
-
     def __repr__(self) -> str:
-        return f"Step({self.func.__name__})"
+        func_name = getattr(self.func, "__name__", repr(self.func))
+        if self.description:
+            return f"Step({func_name}, description={self.description!r})"
+        return f"Step({func_name})"
 
+    __name__ = property(lambda self: self.func.__name__)
     __str__ = __repr__
 
 
@@ -157,7 +159,7 @@ class Pipeline:
             A formatted representation of the pipeline and its steps.
         """
         indent = "  "
-        arrows = "\n    ⬇\n".join(f"{indent}{step.__name__}" for step in self.steps)
+        arrows = "\n    ⬇\n".join(f"{indent}{repr(step)}" for step in self.steps)
         return f"Pipeline(\n{arrows}\n)"
 
     __str__ = __repr__
