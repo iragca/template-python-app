@@ -19,6 +19,11 @@ class Step:
     TypeError
         If `func` is not callable.
 
+    Notes
+    -----
+    Use this if you need to pass additional arguments to a function in the pipeline.
+    If your function only takes a single argument, you can use it directly in the pipeline
+
     Examples
     --------
     >>> def multiply(x, n):
