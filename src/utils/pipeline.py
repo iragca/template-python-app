@@ -105,10 +105,7 @@ class Pipeline:
         """
         value = input
         for step in self.steps:
-            if isinstance(step, Step):
-                value = step(value)
-            elif isinstance(step, Callable):
-                value = step(value)
+            value = step(value)
         return value
 
     def __or__(self, other: Union[Callable, "Pipeline"]) -> "Pipeline":
